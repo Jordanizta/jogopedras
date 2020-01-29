@@ -7,7 +7,8 @@ require_relative "pontos"
 arquivo = File.open("jogadas.txt")
 jogadas = Array.new #cria array de jogadas
 partidas = Array.new #cria array de partidas(3 jogadas = 1 partida)
-resultado_partidas = Array.new #cria  array de resultado das partidas
+resultado_partidas = Array.new #cria array de resultado das partidas
+pontos = Array.new #cria array para guardar pontos das partidas
 classificacao = Array.new #cria array de classificação
 
 #preenche array de jogadas removendo espaçamentos 
@@ -17,18 +18,26 @@ while ! arquivo.eof?
 end
 
 #organiza/monta o array de partidas a partir do array de jogadas
+#partida.rb
 organiza_partidas(jogadas, partidas)
 
 #calcula o total de pulos por partida e insere no array de 'resultado_partidas'
+#pulos.rb
 partidas.size.times { |i|
   total_pulos(partidas, i, resultado_partidas)
 }
 #insere o nome dos jogadores no array de 'resultado_partidas'
+#partida.rb
 popula_resultado_partidas(resultado_partidas, partidas)
 
-#gera pontuação para posteriormente ser adicionada no array de classificação
-resultado_partidas.size.times { |i|
-  gera_pontuacao(resultado_partidas, i)
+#gera a pontuação populando o array de pontos
+gera_pontuacao(resultado_partidas, pontos)
+
+pontos.each { |ponto| 
+  puts ponto[:pontos].to_i if ponto[:nome] == "Caio"
 }
+
+soma_pontos(pontos)
+
 
 arquivo.close

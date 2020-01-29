@@ -31,17 +31,10 @@ private
     end
   end
 
+  #insere os pulos do jogador no array de 'resultado_partidas'
   def insere_pulos(resultado_partidas, pulos_A, pulos_B)
     resultado_partidas.push("#{pulos_A} x #{pulos_B}".split)
   end
-
-
-
-# pulos_jogador(partidas, result_partidas)
-#  partidas.size.times { |vezes|
-#    if partidas[vezes][vezes]
-#  }
-#end
 
 
 
