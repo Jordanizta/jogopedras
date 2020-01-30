@@ -5,10 +5,11 @@ def gera_pontuacao(resultado_partidas, pontos)
     pulos_B = partida[3].to_i
     pontos_A = 0
     pontos_B = 0
-    #O jogador que obtiver o maior número de pulos de pedra na partida, recebe 3 pontos.
-    pulos_A == pulos_B ? pontos_B += 2 : pontos_B += pontos_B
     #Em caso de empate, o jogador que jogar fora de casa, recebe 2 pontos.
-    if pulos_A > pulos_B
+    if pulos_A == pulos_B 
+      pontos_B += 2
+    #O jogador que obtiver o maior número de pulos de pedra na partida, recebe 3 pontos.
+    elsif pulos_A > pulos_B
       pontos_A+=3
     else
       pontos_B+=3
@@ -20,24 +21,35 @@ def gera_pontuacao(resultado_partidas, pontos)
     if pulos_B < 3
       pontos_B-=1
     end
+    #insere pontuação no array de pontos
     pontos.push(popula_array_pontos(partida, 0, pontos_A))
     pontos.push(popula_array_pontos(partida, 2, pontos_B))
   }
 end
 
-def soma_pontos(pontos)
-  pontuacao = 0
-  pontos.each_with_index { |ponto|
-    if ponto[:nome] == "Egio"
-      pontos = ponto[:pontos]
-      pontuacao+=pontos
-    end
+#faz a soma de pontos dos jogadores
+def soma_pontos(pontos, classificacao)
+  pontos.each_with_index { |indice|
+    pontuacao = 0
+    pontos.each_with_index { |nome|
+      if indice[:nome] == nome[:nome]
+        pontuacao += nome[:pontos]
+      end
+    }
+    resultado = "#{pontuacao.to_s} + #{indice[:nome]} "
+    #popula_array_classificacao(classificacao, resultado)
   }
-  puts "---------------"
-  puts pontuacao
 end
 
 private
   def popula_array_pontos(partida, index_nome, pontos)
     jogador = {nome:partida[0].split[index_nome], pontos:pontos}
+  end
+
+  def popula_array_classificacao(classificacao, resultado)
+    classificacao.size.times { |result_jogador|
+      if classificacao[result_jogador].include?(resultado)
+        puts 1
+      end
+    }
   end
