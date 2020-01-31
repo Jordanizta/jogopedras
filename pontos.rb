@@ -21,7 +21,7 @@ def gera_pontuacao(resultado_partidas, pontos)
     if pulos_B < 3
       pontos_B-=1
     end
-    #insere pontuação no array de pontos
+    #insere pontuação das partidas de todos os jogadores no array de pontos
     pontos.push(popula_array_pontos(partida, 0, pontos_A))
     pontos.push(popula_array_pontos(partida, 2, pontos_B))
   }
@@ -36,20 +36,20 @@ def soma_pontos(pontos, classificacao)
         pontuacao += nome[:pontos]
       end
     }
-    resultado = "#{pontuacao.to_s} + #{indice[:nome]} "
-    #popula_array_classificacao(classificacao, resultado)
+    resultado = {nome:indice[:nome], pontos:pontuacao}
+    popula_array_classificacao(classificacao, resultado)
   }
 end
 
 private
+  #insere pontos no array de pontos
   def popula_array_pontos(partida, index_nome, pontos)
     jogador = {nome:partida[0].split[index_nome], pontos:pontos}
   end
 
+  #insere os jogadores e suas pontuações no array de classificação
   def popula_array_classificacao(classificacao, resultado)
-    classificacao.size.times { |result_jogador|
-      if classificacao[result_jogador].include?(resultado)
-        puts 1
-      end
-    }
+    if !classificacao.include?(resultado)
+      classificacao.push(resultado)
+    end
   end

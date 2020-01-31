@@ -2,6 +2,7 @@
 require_relative "partida"
 require_relative "pulos"
 require_relative "pontos"
+require_relative "classificacao"
 
 #abre arquivo e cria arrays que serão usados
 arquivo = File.open("jogadas.txt")
@@ -33,11 +34,11 @@ popula_resultado_partidas(resultado_partidas, partidas)
 #gera a pontuação populando o array de pontos
 gera_pontuacao(resultado_partidas, pontos)
 
-pontos.each { |ponto| 
-  puts ponto[:pontos].to_i if ponto[:nome] == "Caio"
-}
+soma_pontos(pontos, classificacao)
 
-soma_pontos(pontos)
+#ordena o array de classificação (menor pro maior)
+classificacao.sort_by!{ |k| k[:pontos] }
 
+gerar_classificacao(classificacao)
 
 arquivo.close
