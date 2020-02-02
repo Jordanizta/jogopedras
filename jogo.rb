@@ -36,9 +36,13 @@ gera_pontuacao(resultado_partidas, pontos)
 
 soma_pontos(pontos, classificacao)
 
-#ordena o array de classificação (menor pro maior)
-classificacao.sort_by!{ |k| k[:pontos] }
+#ordena o array de classificação (maior pro menor)
+classificacao.sort_by!{ |k| -k[:pontos] }
+#cabeçalho CSV
+cabecalho = {nome:"Jogador", pontos:"Pontuação"}
+classificacao.prepend(cabecalho)
 
+#gera CSV com a classificação geral
 gerar_classificacao(classificacao)
 
 arquivo.close
