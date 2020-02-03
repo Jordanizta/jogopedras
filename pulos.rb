@@ -1,3 +1,4 @@
+#calcula o total de pulos por partida e insere no array de 'resultado_partidas'
 def total_pulos(partidas, index, resultado_partidas)
   #soma os 3 pulos jogador A
   pulos_A=(partidas[index][0][3].to_i + partidas[index][1][3].to_i + partidas[index][2][3].to_i)
@@ -35,6 +36,3 @@ private
   def insere_pulos(resultado_partidas, pulos_A, pulos_B)
     resultado_partidas.push("#{pulos_A} x #{pulos_B}".split)
   end
-
-
-

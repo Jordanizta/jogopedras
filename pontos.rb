@@ -1,4 +1,5 @@
 
+#distribui a pontuação populando o array de pontos
 def gera_pontuacao(resultado_partidas, pontos)
   resultado_partidas.each_with_index { |partida|
     pulos_A = partida[1].to_i

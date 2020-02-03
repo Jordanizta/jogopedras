@@ -5,13 +5,9 @@ def organiza_partidas(jogadas, partidas)
   }
 end
 
+#insere o nome dos jogadores no array de 'resultado_partidas'
 def popula_resultado_partidas(resultado_partidas, partidas)
   resultado_partidas.size.times { |i|
     resultado_partidas[i].prepend("#{partidas[i][0][0]} x #{partidas[i][0][2]}")
   }
 end
-
-
-#teste.each_with_index do |value, index|
-#  answers.push("#{index}" => value)
-#end

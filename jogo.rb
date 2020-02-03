@@ -1,4 +1,3 @@
-#file = "/home/e06124643/projetos/jogopedras/jogadas.txt"
 require_relative "partida"
 require_relative "pulos"
 require_relative "pontos"
@@ -27,18 +26,21 @@ organiza_partidas(jogadas, partidas)
 partidas.size.times { |i|
   total_pulos(partidas, i, resultado_partidas)
 }
+
 #insere o nome dos jogadores no array de 'resultado_partidas'
 #partida.rb
 popula_resultado_partidas(resultado_partidas, partidas)
 
 #gera a pontuação populando o array de pontos
+#pontos.rb
 gera_pontuacao(resultado_partidas, pontos)
-
+#faz a soma de pontos dos jogadores e insere no array de classificação
+#pontos.rb
 soma_pontos(pontos, classificacao)
 
 #ordena o array de classificação (maior pro menor)
 classificacao.sort_by!{ |k| -k[:pontos] }
-#cabeçalho CSV
+#define nome das colunas no CSV
 cabecalho = {nome:"Jogador", pontos:"Pontuação"}
 classificacao.prepend(cabecalho)
 
