@@ -1,1 +1,3 @@
 # jogopedras
+
+executar 'jogo.rb'
